@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simpleblog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-bold">
+  <% if current_user %>
+  <a class="btn btn-outline-primary"<%= link_to t("main.exit"), destroy_user_session_path, method: :delete %></a>
+  <% else %>
+  <a><%= link_to t("main.registration"), new_user_registration_path %></a>
+  <a><%= link_to t("main.signin"), new_user_session_path %></a>
+  <% end %></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <span class="p-2 text-dark"><%= link_to t("main.mainpage"), home_path %></span>
+  </nav>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <span class="p-2 text-dark"><%= link_to t("main.aboutus"), about_path %></span>
+  </nav>
+  <% if current_user %>
+  <span class="p-2 text-dark"><%= link_to t("main.addarticle"), new_post_path %></span>
+  <% end %>
+  <table>
+  <tr>
+    <th>  <ul class="navbar-nav pull-xs-right">
+            <li class="nav-item<%= " active" if I18n.locale == :ru %>">
+              <%= link_to "Рус", { locale: :ru }, class: "nav-link btn btn-outline-primary" %> </li> </ul> </th>
+<th><ul class="navbar-nav pull-xs-right">
+        <li class="nav-item<%= " active" if I18n.locale == :ru %>">
+          <%= link_to "En ", { locale: :en }, class: "nav-link btn btn-outline-primary" %> </li> </ul>  </th>
+</tr>
+</table>
+
+</div>
+
+    <div class="container">
+    <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+    <%= yield %>
+    </div>
+  </body>
+</html>

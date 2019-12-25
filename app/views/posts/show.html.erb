@@ -1,0 +1,30 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+<hr>
+<% if current_user %>
+<%= link_to t("show.change"), edit_post_path(@post), :class => 'btn btn-warning' %>
+<%= link_to t("show.delete"), post_path(@post), method: :delete, data: {confirm: "Хотите удалить стаью?"}, :class => 'btn btn-danger' %>
+<% end %>
+<hr>
+<h2><%= t("show.allcomments") %></h2>
+<% @post.comments.each do |comment| %>
+  <div class = "alert alert-light">
+    <p><strong><%= comment.username %></strong>: <%= comment.body %> </p>
+  </div>
+<% end %>
+
+<hr>
+<h2><%= t("show.addcomment") %></h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= t("show.username") %> <br>
+    <%= f.text_field(:username, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= t("show.textcomment") %><br>
+    <%= f.text_area(:body, {:class => 'form-control'})%>
+  </p>
+  <p>
+    <%= f.submit(t("show.addcomment"), {:class => 'btn btn-warning'})%>
+  </p>
+<% end %>

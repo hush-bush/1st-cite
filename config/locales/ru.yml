@@ -1,0 +1,28 @@
+ru:
+  about:
+    heading: "Страничка про нас"
+    first: "Итоговая работа по курсу языки интернет программирования"
+    second: "Выполнена Валевым Ильей ИУ6 34Б"
+    third: "Не судить "
+    forth: "строго!"
+  main:
+    exit: "Выход"
+    registration: "Регистрация"
+    signin: "Вход"
+    mainpage: "Главная страница"
+    aboutus: "Про нас"
+    addarticle: "Добавить статью"
+  pages:
+    allarticles: "Все статьи"
+    learnmore:  "Читать далее"
+  add:
+    addingnewpost: "Добавление нового поста"
+    title: "Название"
+    textpost: "Текст статьи"
+  show:
+    change: "Редактировать"
+    delete: "Удалить пост"
+    allcomments: "Все комментарии"
+    addcomment: "Добавить комментарий"
+    username: "Пользователь"
+    textcomment: "Текст комментария"
